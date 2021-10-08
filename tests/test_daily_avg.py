@@ -6,3 +6,4 @@ if (result == 3.5):
     assert True
 else:
 #    assert False
+    print('blah')

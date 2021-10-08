@@ -1,5 +1,8 @@
 import json
 import GetPeriodValues
 
-def calcAvg ():
-    return 3.2
+def calcAvg (Values):
+    length = len(Values)
+    total = sum(Values)
+    avg = total/length
+    return avg

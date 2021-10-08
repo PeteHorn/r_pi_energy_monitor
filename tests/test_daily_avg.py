@@ -4,7 +4,7 @@ result = [{"value_exc_vat":3.42,"value_inc_vat":3.591,"valid_from":"2020-03-29T2
 
 TestResult = GetDailyAvg.CalcDailyAvg(result)
 
-if (TestResult == "blah"):
+if (TestResult == result):
     assert True
 else:
     assert False

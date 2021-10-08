@@ -4,6 +4,7 @@ testString = '[{"value_exc_vat":3.42,"value_inc_vat":3.591,"valid_from":"2020-03
 
 TestResult = GetPeriodValues.GetArray(testString)
 
+print(TestResult)
 if (TestResult == [3.591, 3.465, 3.78, 4.452]):
     assert True
 else:

@@ -1,6 +1,6 @@
 from tariff_functions import GetDailyAvg
 
-result = GetDailyAvg("blah")
+result = GetDailyAvg.calcAvg("blah")
 
 if (result == 3.5):
     assert True

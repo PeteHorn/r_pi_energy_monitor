@@ -10,7 +10,7 @@ def test_always_fails():
 
 def test_calcAvg():
     result = GetDailyAvg.calcAvg()
-    if result == 3.5:
+    if result == 3.822:
         assert True
     else:
         assert False
@@ -21,7 +21,7 @@ def test_getPeriodValues():
     TestResult = GetPeriodValues.GetArray(testString)
 
     print(TestResult)
-    if TestResult == [3.591, 3.465, 3.78, 4.452, 5.8768]:
+    if TestResult == [3.591, 3.465, 3.78, 4.452]:
         assert True
     else:
         assert False

@@ -4,5 +4,5 @@ result = [{"value_exc_vat":3.42,"value_inc_vat":3.591,"valid_from":"2020-03-29T2
 
 TestResult = tariff_functions.GetDailyAvg.CalcDailyAvg(result)
 
-assert TestResult = 4.2
-assert TestResult = 4.1
+assert TestResult == 4.2
+assert TestResult == 4.1

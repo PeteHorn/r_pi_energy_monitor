@@ -87,5 +87,5 @@ def test_InfluxDB_writePoints():
             }
         }
     ]
-    InfluxDB_API.WriteData(PersonalData.getValues()['TestInfluxDBName'])
+    InfluxDB_API.WriteData(PersonalData.getValues()['TestInfluxDBName'], json_body)
     assert True

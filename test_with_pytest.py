@@ -1,5 +1,5 @@
 # test_with_pytest.py
-import GetDailyAvg
+import GetDailyStats
 import GetPeriodValues
 
 def test_always_passes():
@@ -10,8 +10,20 @@ def test_always_fails():
 
 def test_calcAvg():
     numericArrayTestValue = [3.591, 3.465, 3.78, 4.452]
-    result = GetDailyAvg.calcAvg(numericArrayTestValue)
+    result = GetDailyStats.calcAvg(numericArrayTestValue)
     if result == 3.822:
+        assert True
+    else:
+        assert False
+
+def test_calcMaxMin():
+    numericArrayTestValue = [3.591, 3.465, 3.78, 4.452]
+    MaxResult, MinResult = GetDailyStats.calcMaxMin(numericArrayTestValue)
+    if MaxResult == 4.452:
+        assert True
+    else:
+        assert False
+    if MinResult == 3.465:
         assert True
     else:
         assert False

@@ -1,4 +1,4 @@
-from InfluxDB import InfluxDBClient
+from influxdb import InfluxDBClient
 
 import PersonalData
 

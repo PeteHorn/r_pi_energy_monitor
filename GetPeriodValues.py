@@ -1,8 +1,11 @@
 import json
 
 def GetArray (jsonString):
-    jsonArray = json.loads(jsonString)
-    avgArray = []
-    for obj in jsonArray:
-        avgArray.append(obj["value_inc_vat"])
-    return avgArray
+    try:
+        jsonArray = json.loads(jsonString)
+        avgArray = []
+        for obj in jsonArray:
+            avgArray.append(obj["value_inc_vat"])
+        return "valid", avgArray
+    except:
+        return "invalid", []

@@ -1,6 +1,7 @@
 # test_with_pytest.py
-import GetDailyStats
+import GetStats
 import GetPeriodValues
+import OctopusEnergy
 
 def test_always_passes():
     assert True
@@ -10,7 +11,7 @@ def test_always_fails():
 
 def test_calcAvg():
     numericArrayTestValue = [3.591, 3.465, 3.78, 4.452]
-    result = GetDailyStats.calcAvg(numericArrayTestValue)
+    result = GetStats.calcAvg(numericArrayTestValue)
     if result == 3.822:
         assert True
     else:
@@ -18,7 +19,7 @@ def test_calcAvg():
 
 def test_calcMaxMin():
     numericArrayTestValue = [3.591, 3.465, 3.78, 4.452]
-    MaxResult, MinResult = GetDailyStats.calcMaxMin(numericArrayTestValue)
+    MaxResult, MinResult = GetStats.calcMaxMin(numericArrayTestValue)
     if MaxResult == 4.452:
         assert True
     else:
@@ -48,6 +49,13 @@ def test_getPeriodValues_invalidInput():
     else:
         assert False
     if confirm == "invalid":
+        assert True
+    else:
+        assert False
+
+def test_OctopusEnergy_createAPI():
+    url = OctopusEnergy.createURL('2021-10-08', 'test')
+    if url == 'https://api.octopus.energy/v1/testURL/?period_from=2021-10-08T00:00:00Z&period_to=2021-10-08T23:59:00Z':
         assert True
     else:
         assert False

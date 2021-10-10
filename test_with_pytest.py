@@ -89,5 +89,5 @@ def test_InfluxDB_writePoints():
     ]
     InfluxDB_API.WriteData(json_body)
     floatResult = InfluxDB_API.Query('Select * FROM cpu_load_short').raw
-    print (floatResult)
+    print (json.loads(floatResult))
     assert floatResult == 0.64

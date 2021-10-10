@@ -80,14 +80,14 @@ def test_InfluxDB_writePoints():
             },
             "date": "2021-10-08",
             "fields": {
-                "22:00:00Z": 0.64,
-                "22:30:00Z": 3.234,
-                "23:00:00Z": 23.422,
-                "23:30:00Z": 1.34
+                "Period_1": 0.64,
+                "Period_2": 3.234,
+                "Period_3": 23.422,
+                "Period_4": 1.34
             }
         }
     ]
     InfluxDB_API.WriteData(json_body)
-    floatResult = InfluxDB_API.Query('Select * FROM energy_tariff').raw
+    floatResult = InfluxDB_API.Query('Select Period_1 FROM energy_tariff').raw
     print (json.loads(floatResult))
     assert floatResult == 0.64

@@ -92,4 +92,4 @@ def test_InfluxDB_writePoints():
     print(result.get_points())
     print(result.items())
     print(result.keys())
-    assert floatResult[0]['values'][1] == 0.64
+    assert result[0]['values'][1] == 0.64

@@ -83,10 +83,10 @@ def test_InfluxDB_writePoints():
                 "Float_value": 0.64,
                 "Int_value": 3,
                 "String_value": "Text",
-                "Bool_value": True,
-                "value": 0.64
+                "Bool_value": True
             }
         }
     ]
     InfluxDB_API.WriteData(PersonalData.getValues()['TestInfluxDBName'], json_body)
-    assert True
+    floatResult = InfluxDB_API.Query('Select Float_Value FROM ' + PersonalData.getValues()['TestInfluxDBName'])
+    assert floatResult == 0.64

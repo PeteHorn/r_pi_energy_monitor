@@ -115,7 +115,7 @@ def test_InfluxDB_writePointsDateSpecified():
         }
     ]
     InfluxDB_API.WriteData(json_body)
-    result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff WHERE date = ' + today).raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff WHERE date = 2021-10-10').raw.items()[0][1][0]['values']
     print(result)
     revResult = result[::-1]
     assert revResult[0][1] == 0.67

@@ -104,13 +104,12 @@ def test_InfluxDB_writePointsDateSpecified():
     json_body = [
         {
             "measurement": "energy_tariff",
-            "date": today,
             "fields": {
                 "date": today,
-                "Period_1": 0.67,
-                "Period_2": 3.234,
-                "Period_3": 23.422,
-                "Period_4": 1.34
+                "Period_1": 0.767,
+                "Period_2": 3.7234,
+                "Period_3": 23.7422,
+                "Period_4": 1.734
             }
         }
     ]

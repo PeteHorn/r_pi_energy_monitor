@@ -73,21 +73,21 @@ def test_OctopusEnergy_getDailyTariffInfo():
 def test_InfluxDB_writePoints():
     json_body = [
         {
-            "measurement": "cpu_load_short",
+            "measurement": "energy_tariff",
             "tags": {
                 "host": "server01",
                 "region": "us-west"
             },
-            "time": "2009-11-10T23:00:00Z",
+            "date": "2021-10-08",
             "fields": {
-                "Float_value": 0.64,
-                "Int_value": 3,
-                "String_value": "Text",
-                "Bool_value": True
+                "22:00:00Z": 0.64,
+                "22:30:00Z": 3.234,
+                "23:00:00Z": 23.422,
+                "23:30:00Z": 1.34
             }
         }
     ]
     InfluxDB_API.WriteData(json_body)
-    floatResult = InfluxDB_API.Query('Select Float_value FROM cpu_load_short').raw
+    floatResult = InfluxDB_API.Query('Select * FROM energy_tariff').raw
     print (json.loads(floatResult))
     assert floatResult == 0.64

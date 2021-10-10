@@ -83,7 +83,8 @@ def test_InfluxDB_writePoints():
                 "Float_value": 0.64,
                 "Int_value": 3,
                 "String_value": "Text",
-                "Bool_value": True
+                "Bool_value": True,
+                "value": 0.64
             }
         }
     ]

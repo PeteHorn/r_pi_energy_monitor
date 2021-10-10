@@ -89,5 +89,4 @@ def test_InfluxDB_writePoints():
     ]
     InfluxDB_API.WriteData(json_body)
     floatResult = InfluxDB_API.Query('Select Period_1 FROM energy_tariff').raw
-    print (json.loads(floatResult))
     assert floatResult == 0.64

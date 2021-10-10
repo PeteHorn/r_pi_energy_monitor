@@ -99,7 +99,7 @@ def test_InfluxDB_writePointsNoDateSpecified():
     assert revResult[0][1] == 1.34
 
 def test_InfluxDB_writePointsDateSpecified():
-    today = datetime.date.today()
+    today = datetime.date.today().__str__()
     json_body = [
         {
             "measurement": "energy_tariff",

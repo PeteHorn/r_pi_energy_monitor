@@ -1,5 +1,6 @@
 #utility imports
 import json
+import datetime
 
 # function py file imports
 import GetStats
@@ -70,7 +71,7 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
-def test_InfluxDB_writePoints():
+def test_InfluxDB_writePointsNoDateSpecified():
     json_body = [
         {
             "measurement": "energy_tariff",
@@ -96,3 +97,22 @@ def test_InfluxDB_writePoints():
     result = InfluxDB_API.Query('Select Period_4 FROM energy_tariff').raw.items()[0][1][0]['values']
     revResult = result[::-1]
     assert revResult[0][1] == 1.34
+
+def test_InfluxDB_writePointsDateSpecified():
+    today = datetime.date.today()
+    json_body = [
+        {
+            "measurement": "energy_tariff",
+            "date": today,
+            "fields": {
+                "Period_1": 0.67,
+                "Period_2": 3.234,
+                "Period_3": 23.422,
+                "Period_4": 1.34
+            }
+        }
+    ]
+    InfluxDB_API.WriteData(json_body)
+    result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff WHERE date = ' + today).raw.items()[0][1][0]['values']
+    revResult = result[::-1]
+    assert revResult[0][1] == 0.67

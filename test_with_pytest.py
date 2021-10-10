@@ -80,7 +80,7 @@ def test_InfluxDB_writePoints():
             },
             "date": "2021-10-10",
             "fields": {
-                "Period_1": 0.64,
+                "Period_1": 0.67,
                 "Period_2": 3.234,
                 "Period_3": 23.422,
                 "Period_4": 1.34

@@ -74,10 +74,6 @@ def test_InfluxDB_writePoints():
     json_body = [
         {
             "measurement": "energy_tariff",
-            "tags": {
-                "host": "server01",
-                "region": "us-west"
-            },
             "date": "2021-10-10",
             "fields": {
                 "Period_1": 0.67,
@@ -90,4 +86,13 @@ def test_InfluxDB_writePoints():
     InfluxDB_API.WriteData(json_body)
     result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff').raw.items()[0][1][0]['values']
     revResult = result[::-1]
-    assert revResult[0][1] == 0.64
+    assert revResult[0][1] == 0.67
+    result = InfluxDB_API.Query('Select Period_2 FROM energy_tariff').raw.items()[0][1][0]['values']
+    revResult = result[::-1]
+    assert revResult[0][1] == 3.234
+    result = InfluxDB_API.Query('Select Period_3 FROM energy_tariff').raw.items()[0][1][0]['values']
+    revResult = result[::-1]
+    assert revResult[0][1] == 23.422
+    result = InfluxDB_API.Query('Select Period_4 FROM energy_tariff').raw.items()[0][1][0]['values']
+    revResult = result[::-1]
+    assert revResult[0][1] == 1.34

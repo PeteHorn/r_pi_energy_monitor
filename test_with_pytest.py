@@ -100,7 +100,6 @@ def test_InfluxDB_writePointsNoDateSpecified():
 
 def test_InfluxDB_writePointsDateSpecified():
     today = datetime.date.today().__str__()
-    print(today)
     json_body = [
         {
             "measurement": "energy_tariff",

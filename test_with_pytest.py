@@ -119,7 +119,7 @@ def test_InfluxDB_writePointsDateSpecified():
     assert revResult[0][2] == 0.767
     assert revResult[0][1] == today
 
-def test_InfluxDB_ManyWritePointsDateSpecified():
+def test_InfluxDB_4_WritePointsDateSpecified():
     today = datetime.date.today().__str__()
     json_body = [
         {
@@ -141,4 +141,68 @@ def test_InfluxDB_ManyWritePointsDateSpecified():
     assert revResult[0][3] == 3.7234
     assert revResult[0][4] == 23.7422
     assert revResult[0][5] == 1.734
+    assert revResult[0][1] == today
+
+def test_InfluxDB_24_WritePointsDateSpecified():
+    today = datetime.date.today().__str__()
+    json_body = [
+        {
+            "measurement": "energy_tariff",
+            "fields": {
+                "date": today,
+                "Period_1": 0.767,
+                "Period_2": 3.7234,
+                "Period_3": 23.7422,
+                "Period_4": 1.734,
+                "Period_5": 0.767,
+                "Period_6": 3.7234,
+                "Period_7": 23.7422,
+                "Period_8": 1.734,
+                "Period_9": 0.767,
+                "Period_10": 3.7234,
+                "Period_11": 23.7422,
+                "Period_12": 1.734,
+                "Period_13": 0.767,
+                "Period_14": 3.7234,
+                "Period_15": 23.7422,
+                "Period_16": 1.734,
+                "Period_17": 0.767,
+                "Period_18": 3.7234,
+                "Period_19": 23.7422,
+                "Period_20": 1.734,
+                "Period_21": 0.767,
+                "Period_22": 3.7234,
+                "Period_23": 23.7422,
+                "Period_24": 1.734
+            }
+        }
+    ]
+    print(json_body)
+    InfluxDB_API.WriteData(json_body)
+    result = InfluxDB_API.Query('Select date, Period_1, Period_2, Period_3, Period_4, Period_5, Period_6, Period_7, Period_8, Period_9, Period_10, Period_11, Period_12, Period_13, Period_14, Period_15, Period_16, Period_17, Period_18, Period_19, Period_20, Period_21, Period_22, Period_23, Period_24 FROM energy_tariff')
+    revResult = result[::-1]
+    assert revResult[0][2] == 0.767
+    assert revResult[0][3] == 3.7234
+    assert revResult[0][4] == 23.7422
+    assert revResult[0][5] == 1.734
+    assert revResult[0][6] == 0.767
+    assert revResult[0][7] == 3.7234
+    assert revResult[0][8] == 23.7422
+    assert revResult[0][9] == 1.734
+    assert revResult[0][10] == 0.767
+    assert revResult[0][11] == 3.7234
+    assert revResult[0][12] == 23.7422
+    assert revResult[0][13] == 1.734
+    assert revResult[0][14] == 0.767
+    assert revResult[0][15] == 3.7234
+    assert revResult[0][16] == 23.7422
+    assert revResult[0][17] == 1.734
+    assert revResult[0][19] == 0.767
+    assert revResult[0][20] == 3.7234
+    assert revResult[0][21] == 23.7422
+    assert revResult[0][22] == 1.734
+    assert revResult[0][23] == 0.767
+    assert revResult[0][24] == 3.7234
+    assert revResult[0][25] == 23.7422
+    assert revResult[0][26] == 1.734
     assert revResult[0][1] == today

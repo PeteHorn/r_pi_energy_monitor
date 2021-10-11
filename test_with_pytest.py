@@ -120,5 +120,5 @@ def test_InfluxDB_writePointsDateSpecified():
     revResult = result[0][::-1]
     print(revResult[0])
     print('-----------------------------------')
-    print(revResult[1])
-    assert revResult[1] == 0.67
+    print(revResult[0]('Period_1'))
+    assert revResult[0]('Period_1') == 0.67

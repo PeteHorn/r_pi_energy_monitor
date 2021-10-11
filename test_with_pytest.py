@@ -197,12 +197,12 @@ def test_InfluxDB_24_WritePointsDateSpecified():
     assert revResult[0][15] == 3.7234
     assert revResult[0][16] == 23.7422
     assert revResult[0][17] == 1.734
-    assert revResult[0][19] == 0.767
-    assert revResult[0][20] == 3.7234
-    assert revResult[0][21] == 23.7422
-    assert revResult[0][22] == 1.734
-    assert revResult[0][23] == 0.767
-    assert revResult[0][24] == 3.7234
-    assert revResult[0][25] == 23.7422
-    assert revResult[0][26] == 1.734
+    assert revResult[0][18] == 0.767
+    assert revResult[0][19] == 3.7234
+    assert revResult[0][20] == 23.7422
+    assert revResult[0][21] == 1.734
+    assert revResult[0][22] == 0.767
+    assert revResult[0][23] == 3.7234
+    assert revResult[0][24] == 23.7422
+    assert revResult[0][25] == 1.734
     assert revResult[0][1] == today

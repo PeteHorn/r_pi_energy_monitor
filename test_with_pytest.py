@@ -115,7 +115,7 @@ def test_InfluxDB_writePointsDateSpecified():
     print(json_body)
     InfluxDB_API.WriteData(json_body)
     result = InfluxDB_API.Query('Select date, Period_1 FROM energy_tariff')
-    print(result)
+    print(result[0])
     print('-----------------------------------')
     revResult = result[::-1]
     print(revResult[0])

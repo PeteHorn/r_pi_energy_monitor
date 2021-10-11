@@ -121,5 +121,5 @@ def test_InfluxDB_writePointsDateSpecified():
     print(revResult[0])
     j_res = json.loads(revResult[0])
     print('-----------------------------------')
-    print(j_res('Period_1'))
+    print(j_res)
     assert j_res('Period_1') == 0.67

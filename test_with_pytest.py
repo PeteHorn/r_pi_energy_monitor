@@ -118,3 +118,27 @@ def test_InfluxDB_writePointsDateSpecified():
     revResult = result[::-1]
     assert revResult[0][2] == 0.767
     assert revResult[0][1] == today
+
+def test_InfluxDB_ManyWritePointsDateSpecified():
+    today = datetime.date.today().__str__()
+    json_body = [
+        {
+            "measurement": "energy_tariff",
+            "fields": {
+                "date": today,
+                "Period_1": 0.767,
+                "Period_2": 3.7234,
+                "Period_3": 23.7422,
+                "Period_4": 1.734
+            }
+        }
+    ]
+    print(json_body)
+    InfluxDB_API.WriteData(json_body)
+    result = InfluxDB_API.Query('Select date, Period_1, Period_2, Period_3, Period_4 FROM energy_tariff')
+    revResult = result[::-1]
+    assert revResult[0][2] == 0.767
+    assert revResult[0][3] == 3.7234
+    assert revResult[0][4] == 23.7422
+    assert revResult[0][5] == 1.734
+    assert revResult[0][1] == today

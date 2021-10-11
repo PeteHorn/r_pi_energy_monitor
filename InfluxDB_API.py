@@ -19,5 +19,5 @@ def WriteData(json_body):
 
 def Query(queryString):
     client = getClient()
-    result = client.query(queryString)
+    result = client.query(queryString).raw.items()[0][1][0]['values']
     return result

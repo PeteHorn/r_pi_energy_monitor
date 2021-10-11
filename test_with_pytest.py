@@ -85,16 +85,16 @@ def test_InfluxDB_writePointsNoDateSpecified():
         }
     ]
     InfluxDB_API.WriteData(json_body)
-    result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff').raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select Period_1 FROM energy_tariff')
     revResult = result[::-1]
     assert revResult[0][1] == 0.67
-    result = InfluxDB_API.Query('Select Period_2 FROM energy_tariff').raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select Period_2 FROM energy_tariff')
     revResult = result[::-1]
     assert revResult[0][1] == 3.234
-    result = InfluxDB_API.Query('Select Period_3 FROM energy_tariff').raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select Period_3 FROM energy_tariff')
     revResult = result[::-1]
     assert revResult[0][1] == 23.422
-    result = InfluxDB_API.Query('Select Period_4 FROM energy_tariff').raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select Period_4 FROM energy_tariff')
     revResult = result[::-1]
     assert revResult[0][1] == 1.34
 
@@ -114,7 +114,7 @@ def test_InfluxDB_writePointsDateSpecified():
     ]
     print(json_body)
     InfluxDB_API.WriteData(json_body)
-    result = InfluxDB_API.Query('Select date, Period_1 FROM energy_tariff').raw.items()[0][1][0]['values']
+    result = InfluxDB_API.Query('Select date, Period_1 FROM energy_tariff')
     revResult = result[::-1]
     assert revResult[0][2] == 0.767
     assert revResult[0][1] == today

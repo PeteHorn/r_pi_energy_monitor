@@ -6,8 +6,6 @@ import datetime
 import GetStats
 import GetPeriodValues
 import OctopusEnergy
-import InfluxDB_API
-import PersonalData
 
 def test_always_passes():
     assert True

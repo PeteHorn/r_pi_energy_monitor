@@ -71,7 +71,7 @@ def test_MQTT_publishing():
     testdata = []
     testdata.append({
         'topic': 'test_topic',
-        'data': datetime.time().strftime()
+        'data': datetime.time()
     })
     testJSON = json.dumps(testdata)
     MQTT.DailyUpdate(testJSON)

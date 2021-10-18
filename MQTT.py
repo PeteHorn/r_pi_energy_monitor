@@ -6,7 +6,8 @@ def DailyUpdate(data):
     print(data)
     client = mqtt.Client()
     client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
-    for element in data:
+    j = json.loads(data)
+    for element in j:
         print(element)
         j = json.loads(element)
         print(j)

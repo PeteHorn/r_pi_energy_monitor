@@ -9,7 +9,5 @@ def DailyUpdate(data):
     j = json.loads(data)
     for element in j:
         print(element)
-        j = json.loads(element)
-        print(j)
-        client.publish(j['topic'], payload=j['data'], qos=0, retain=False)
+        client.publish(element['topic'], payload=element['data'], qos=0, retain=False)
     client.disconnect()

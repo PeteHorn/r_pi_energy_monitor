@@ -1,7 +1,7 @@
 #utility imports
 import json
 import datetime
-import paho.mqtt.client as mqtt
+import paho.mqtt.subscribe as mqtt
 
 
 # function py file imports
@@ -9,6 +9,7 @@ import GetStats
 import GetPeriodValues
 import OctopusEnergy
 import MQTT as mqtt_custom
+import PersonalData
 
 def test_always_passes():
     assert True
@@ -75,11 +76,9 @@ def test_MQTT_publishing():
         print('hello')
         response = msg.payload
         print(response)
-        
-    client = mqtt.Client()
+
     testTopic = 'test_topic'
-    client.subscribe(testTopic)
-    client.on_message = on_message
+    mqtt.callback(on_message, testTopic, PersonalData.getValues()['MQTT_IP'])
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({

@@ -71,7 +71,9 @@ def test_OctopusEnergy_getDailyTariffInfo():
 
 response = str('')
 def on_message(client, userdata, msg):
+    print('hello')
     response = msg.payload
+    print(response)
 
 def test_MQTT_publishing():
     client = mqtt.Client()

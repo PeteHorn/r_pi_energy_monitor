@@ -17,6 +17,8 @@ client.on_connect = on_connect
 client.on_message = on_message
 
 client.connect("mqtt.eclipse.org", 1883, 60)
+client.publish('test_topic', payload='blah', qos=0, retain=False)
+
 
 # Blocking call that processes network traffic, dispatches callbacks and
 # handles reconnecting.

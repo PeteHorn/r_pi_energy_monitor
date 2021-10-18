@@ -6,5 +6,4 @@ def DailyUpdate(topic, data):
 
 client = mqtt.Client()
 client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
-DailyUpdate('test_topic', 'blah blah blah')
 client.disconnect()

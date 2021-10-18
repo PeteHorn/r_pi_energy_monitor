@@ -72,6 +72,8 @@ def test_MQTT_publishing():
         'testDataTopic': 'test_topic',
         'testDataPacket': 'this is a set of data'
     }]
+    print(testdata)
     testJSON = json.dumps(testdata)
+    print(testJSON)
     MQTT.DailyUpdate(testJSON)
     assert True

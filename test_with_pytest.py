@@ -71,7 +71,7 @@ def test_OctopusEnergy_getDailyTariffInfo():
 
 response = ''
 def on_message(client, userdata, msg):
-    response = str(msg.payload)
+    response = msg.payload
 
 def test_MQTT_publishing():
     MQTT_client = mqtt.Client()
@@ -86,4 +86,4 @@ def test_MQTT_publishing():
     })
     testJSON = json.dumps(testdata)
     mqtt_custom.DailyUpdate(testJSON)
-    assert str(response) == str(testPacket)
+    assert response == testPacket

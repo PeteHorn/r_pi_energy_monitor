@@ -68,10 +68,11 @@ def test_OctopusEnergy_getDailyTariffInfo():
     assert results == expectedJSON
 
 def test_MQTT_publishing():
-    testdata = [{
+    testdata = []
+    testdata.append({
         'testDataTopic': 'test_topic',
         'testDataPacket': 'this is a set of data'
-    }]
+    })
     testJSON = json.dumps(testdata)
     MQTT.DailyUpdate(testJSON)
     assert True

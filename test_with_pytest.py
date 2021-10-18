@@ -70,16 +70,16 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
-response = str('')
-def on_message(client, userdata, msg):
-    print('hello')
-    response = msg.payload
-    print(response)
+#response = str('')
+#def on_message(client, userdata, msg):
+#    print('hello')
+#    response = msg.payload
+#    print(response)
 
 def test_MQTT_publishing():
     
     testTopic = 'test_topic'
-    mqtt.callback(on_message, testTopic, hostname=PersonalData.getValues()['MQTT_IP'], qos=0)
+    response = mqtt.simple(testTopic, hostname=PersonalData.getValues()['MQTT_IP'], qos=0)
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({

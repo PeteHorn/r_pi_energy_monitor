@@ -11,7 +11,7 @@ def createURL (date, type):
     return 'https://api.octopus.energy/v1/' + URLs[type] + '/?period_from=' + date + 'T00:00:00Z&period_to=' + date + 'T23:59:00Z'
 
 def ReturnEnergyDataStr(date, type):
-    APIKEY = PersonalData.getValues['OctopusAPIkey']
+    APIKEY = PersonalData.getValues()['OctopusAPIkey']
     req = requests.get(createURL(date, type), auth=(APIKEY,''))
     rawText = req.text
     jsonText = json.loads(rawText)

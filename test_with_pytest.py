@@ -1,12 +1,14 @@
 #utility imports
 import json
 import datetime
+import paho.mqtt.client as mqtt
+
 
 # function py file imports
 import GetStats
 import GetPeriodValues
 import OctopusEnergy
-import MQTT
+import MQTT as mqtt_custom
 
 def test_always_passes():
     assert True
@@ -67,12 +69,21 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
+response = ''
+def on_message(client, userdata, msg):
+    response = str(msg.payload)
+
 def test_MQTT_publishing():
+    MQTT_client = mqtt.Client()
+    testTopic = 'test_topic'
+    MQTT_client.subscribe(testTopic)
+    MQTT_client.on_message = on_message
+    testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({
-        'topic': 'test_topic',
-        'data': datetime.datetime.now().strftime("%H:%M:%S")
+        'topic': testTopic,
+        'data': testPacket
     })
     testJSON = json.dumps(testdata)
-    MQTT.DailyUpdate(testJSON)
-    assert True
+    mqtt_custom.DailyUpdate(testJSON)
+    assert response == testPacket

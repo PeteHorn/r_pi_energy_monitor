@@ -74,10 +74,10 @@ def on_message(client, userdata, msg):
     response = msg.payload
 
 def test_MQTT_publishing():
-    MQTT_client = mqtt.Client()
+    client = mqtt.Client()
     testTopic = 'test_topic'
-    MQTT_client.subscribe(testTopic)
-    MQTT_client.on_message = on_message
+    client.subscribe(testTopic)
+    client.on_message = on_message
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({

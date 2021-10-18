@@ -16,7 +16,7 @@ client = mqtt.Client()
 client.on_connect = on_connect
 client.on_message = on_message
 
-client.connect("mqtt.eclipse.org", 1883, 60)
+client.connect("192.168.68.109", 1883, 60)
 client.publish('test_topic', payload='blah', qos=0, retain=False)
 
 

@@ -69,7 +69,7 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
-response = ''
+response = str('')
 def on_message(client, userdata, msg):
     response = msg.payload
 

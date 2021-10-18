@@ -69,8 +69,8 @@ def test_OctopusEnergy_getDailyTariffInfo():
 
 def test_MQTT_publishing():
     testdata = [{
-        'testDataTopic' = 'test_topic',
-        'testDataPacket' = 'this is a set of data'
+        'testDataTopic': 'test_topic',
+        'testDataPacket': 'this is a set of data'
     }]
     testJSON = json.dumps(testdata)
     MQTT.DailyUpdate(testJSON)

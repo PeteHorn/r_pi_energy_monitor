@@ -3,6 +3,7 @@ import PersonalData
 import json
 
 def DailyUpdate(data):
+    print(data)
     client = mqtt.Client()
     client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
     for element in data:

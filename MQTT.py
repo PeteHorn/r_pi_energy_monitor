@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 import PersonalData
 
-PD = PersonalData.getValues
+PD = PersonalData.getValues()
 
 client = mqtt.Client()
 print(PD['MQTT_IP'])

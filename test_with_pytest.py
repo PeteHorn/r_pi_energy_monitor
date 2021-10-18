@@ -79,7 +79,7 @@ def on_message(client, userdata, msg):
 def test_MQTT_publishing():
     
     testTopic = 'test_topic'
-    mqtt.callback(on_message, testTopic, PersonalData.getValues()['MQTT_IP'])
+    mqtt.callback(on_message, testTopic, hostname=PersonalData.getValues()['MQTT_IP'], qos=0)
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({

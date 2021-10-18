@@ -86,4 +86,4 @@ def test_MQTT_publishing():
     })
     testJSON = json.dumps(testdata)
     mqtt_custom.DailyUpdate(testJSON)
-    assert response == testPacket
+    assert str(response) == str(testPacket)

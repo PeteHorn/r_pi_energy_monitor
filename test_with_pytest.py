@@ -84,9 +84,13 @@ def on_message(client, userdata, msg):
 
 def test_MQTT_publishing():
     mqtt_client = mqtt_standard.Client()
+    print('create')
     mqtt_client.on_connect = on_connect
+    print('connect callback')
     mqtt_client.on_message = on_message
+    print('message callback')
     mqtt_client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
+    print('connected')
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({
@@ -95,4 +99,5 @@ def test_MQTT_publishing():
     })
     testJSON = json.dumps(testdata)
     mqtt_custom.DailyUpdate(testJSON)
+    print('published')
     assert response == testPacket

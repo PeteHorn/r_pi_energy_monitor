@@ -2,6 +2,7 @@
 import json
 import datetime
 import paho.mqtt.client as mqtt_standard
+import time
 
 
 # function py file imports
@@ -98,6 +99,8 @@ def test_MQTT_publishing():
         'data': testPacket
     })
     testJSON = json.dumps(testdata)
+    time.sleep(5)
     mqtt_custom.DailyUpdate(testJSON)
+    time.sleep(5)
     print('published')
     assert response == testPacket

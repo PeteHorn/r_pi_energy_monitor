@@ -87,7 +87,7 @@ def test_MQTT_publishing():
     mqtt_client = mqtt_standard.Client()
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
-    mqtt_client.connect(testTopic, hostname=PersonalData.getValues()['MQTT_IP'], qos=0)
+    mqtt_client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
     testPacket = datetime.datetime.now().strftime("%H:%M:%S")
     testdata = []
     testdata.append({

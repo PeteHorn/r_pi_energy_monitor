@@ -71,19 +71,19 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
-testTopic = 'test_topic'
-
-def on_connect(client, userdata, flags, rc):
-    print("Connected with result code "+str(rc))
-    client.subscribe(testTopic)
-
-response = str('')
-def on_message(client, userdata, msg):
-    print('hello')
-    response = msg.payload
-    print(response)
-
 def test_MQTT_publishing():
+    testTopic = 'test_topic'
+
+    def on_connect(client, userdata, flags, rc):
+        print("Connected with result code "+str(rc))
+        client.subscribe(testTopic)
+
+    response = str('')
+    def on_message(client, userdata, msg):
+        print('hello')
+        response = msg.payload
+        print(response)
+        
     mqtt_client = mqtt_standard.Client()
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message

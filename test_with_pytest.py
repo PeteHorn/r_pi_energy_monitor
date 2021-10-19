@@ -72,28 +72,27 @@ def test_OctopusEnergy_getDailyTariffInfo():
 
 testTopic = 'test_topic'
 
-#def on_connect(client, userdata, flags, rc):
-#    print("Connected with result code "+str(rc))
-#    client.subscribe(testTopic)
+def on_connect(client, userdata, flags, rc):
+    print("Connected with result code "+str(rc))
+    client.subscribe(testTopic)
 
-#response = str('')
-#def on_message(client, userdata, msg):
-#    print('hello')
-#    response = msg.payload
-#    print(response)
+response = str('')
+def on_message(client, userdata, msg):
+    print('hello')
+    response = msg.payload
+    print(response)
 
-#def test_MQTT_publishing():
-    
-#    mqtt_client = mqtt_standard.Client()
-#    mqtt_client.on_connect = on_connect
-#    mqtt_client.on_message = on_message
-#    mqtt_client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
-#    testPacket = datetime.datetime.now().strftime("%H:%M:%S")
-#    testdata = []
-#    testdata.append({
-#        'topic': testTopic,
-#        'data': testPacket
-#    })
-#    testJSON = json.dumps(testdata)
-#    mqtt_custom.DailyUpdate(testJSON)
-#    assert response == testPacket
+def test_MQTT_publishing():
+    mqtt_client = mqtt_standard.Client()
+    mqtt_client.on_connect = on_connect
+    mqtt_client.on_message = on_message
+    mqtt_client.connect(PersonalData.getValues()['MQTT_IP'], 1883, 60)
+    testPacket = datetime.datetime.now().strftime("%H:%M:%S")
+    testdata = []
+    testdata.append({
+        'topic': testTopic,
+        'data': testPacket
+    })
+    testJSON = json.dumps(testdata)
+    mqtt_custom.DailyUpdate(testJSON)
+    assert response == testPacket

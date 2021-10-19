@@ -83,7 +83,7 @@ def test_MQTT_publishing():
         print('hello')
         response = msg.payload
         print(response)
-        
+
     mqtt_client = mqtt_standard.Client()
     mqtt_client.on_connect = on_connect
     mqtt_client.on_message = on_message
@@ -95,6 +95,12 @@ def test_MQTT_publishing():
         'data': testPacket
     })
     testJSON = json.dumps(testdata)
+    time.sleep(5)
+    mqtt_custom.DailyUpdate(testJSON)
+    time.sleep(5)
+    mqtt_custom.DailyUpdate(testJSON)
+    time.sleep(5)
+    mqtt_custom.DailyUpdate(testJSON)
     time.sleep(5)
     mqtt_custom.DailyUpdate(testJSON)
     time.sleep(5)

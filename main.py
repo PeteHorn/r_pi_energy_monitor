@@ -6,7 +6,7 @@ import OctopusEnergy
 import GetPeriodValues
 
 def process():
-    today = datetime.datetime.date(datetime.datetime.today())
+    today = str(datetime.datetime.date(datetime.datetime.today()))
     periodJSON = OctopusEnergy.ReturnEnergyDataStr(today, 'tariff')
     print(periodJSON)
     confirm, periodTariffs = GetPeriodValues.GetArray(periodJSON)

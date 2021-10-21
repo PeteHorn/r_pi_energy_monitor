@@ -94,8 +94,6 @@ def test_MQTT_publishing():
         'data': testPacket
     })
     testJSON = json.dumps(testdata)
-    time.sleep(5)
     mqtt_custom.DailyUpdate(testJSON)
-    time.sleep(5)
     mqtt_client.loop_stop()
     assert response == testPacket

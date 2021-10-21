@@ -4,15 +4,13 @@ import datetime
 import time
 import OctopusEnergy
 import GetPeriodValues
+import json
 
 def process():
     today = str(datetime.datetime.date(datetime.datetime.today()))
     periodJSON = OctopusEnergy.ReturnEnergyDataStr(today, 'tariff')
-    print(periodJSON)
+    print(json.loads(periodJSON))
     confirm, periodTariffs = GetPeriodValues.GetArray(periodJSON)
-    if confirm == 'valid':
-        print(str(periodTariffs))
-    else:
-        print('invalid')
+    print(confirm)
 
 process()

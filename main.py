@@ -10,6 +10,9 @@ def process():
     periodJSON = OctopusEnergy.ReturnEnergyDataStr(today, 'tariff')
     print(periodJSON)
     confirm, periodTariffs = GetPeriodValues.GetArray(periodJSON)
-    print(periodTariffs)
+    if confirm == 'valid':
+        print(str(periodTariffs))
+    else:
+        print('invalid')
 
 process()

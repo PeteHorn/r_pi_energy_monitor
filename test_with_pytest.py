@@ -85,6 +85,7 @@ def test_MQTT_publishing():
         print(response)
 
     mqtt_client = mqtt_standard.Client()
+    mqtt_client.loop_start()
     mqtt_client.on_connect = on_connect
     mqtt_client.subscribe(testTopic)
     mqtt_client.on_message = on_message
@@ -99,4 +100,5 @@ def test_MQTT_publishing():
     time.sleep(5)
     mqtt_custom.DailyUpdate(testJSON)
     time.sleep(5)
+    mqtt_client.loop_stop()
     assert response == testPacket

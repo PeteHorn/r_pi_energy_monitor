@@ -11,3 +11,5 @@ def process():
     print(periodJSON)
     confirm, periodTariffs = GetPeriodValues.GetArray(periodJSON)
     print(periodTariffs)
+
+process()

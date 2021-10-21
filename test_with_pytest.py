@@ -71,8 +71,6 @@ def test_OctopusEnergy_getDailyTariffInfo():
     results = OctopusEnergy.ReturnEnergyDataStr('2021-10-08', 'tariff')
     assert results == expectedJSON
 
-
-response = "blah"
 def test_MQTT_publishing():
     testTopic = 'test_topic'
 
@@ -80,6 +78,7 @@ def test_MQTT_publishing():
         client.subscribe(testTopic)
 
     def on_message(client, userdata, msg):
+        global response
         response = msg.payload
 
     mqtt_client = mqtt_standard.Client()

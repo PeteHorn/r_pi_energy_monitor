@@ -64,8 +64,9 @@ def process():
     confirm, periodTariffs = GetPeriodValues.GetArray(periodJSON)
     mqttPacket = []
     for x in range(48):
+        i = 48 - x
         mqttPacket.append({
-        'topic': 'OctopusTariff/'+topiclist[48 - x],
+        'topic': 'OctopusTariff/'+topiclist[i],
         'data': periodTariffs[x]
         })
     revmqttpkt = mqttPacket[::-1]

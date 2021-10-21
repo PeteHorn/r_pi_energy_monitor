@@ -68,12 +68,15 @@ def process():
         'topic': 'OctopusTariff/'+topiclist[x],
         'data': periodTariffs[x]
         })
-    mqtt_custom.DailyUpdate(mqttPacket)
+    jsonPkt = json.dumps(mqttPacket)
+    mqtt_custom.DailyUpdate(jsonPkt)
     avg = GetStats.calcAvg(periodTariffs)
     avgPacket = []
     avgPacket.append({
         'topic': 'OctopusTariff/DailyAvg',
         'data': str(avg)
     })
+    jsonPkt = json.dumps(avgPacket)
+    mqtt_custom.DailyUpdate(jsonPkt)
 
 process()

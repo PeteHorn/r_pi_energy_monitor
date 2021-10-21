@@ -65,6 +65,7 @@ def process():
     mqttPacket = []
     for x in range(48):
         i = 48 - x
+        print(i)
         mqttPacket.append({
         'topic': 'OctopusTariff/'+topiclist[i],
         'data': periodTariffs[x]
